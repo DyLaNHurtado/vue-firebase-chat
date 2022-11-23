@@ -1,0 +1,27 @@
+{
+  "name": "vue-firebase-chat",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "core-js": "^3.26.1",
+    "dayjs": "^1.11.6",
+    "firebase": "^9.14.0",
+    "vue": "^3.2.41",
+    "vue-router": "^4.1.6",
+    "vue-toast-notification": "^0.6.3",
+    "vuex": "^4.1.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^3.2.0",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.19",
+    "tailwindcss": "^3.2.4",
+    "vite": "^3.2.3"
+  },
+  "type": "module"
+}
