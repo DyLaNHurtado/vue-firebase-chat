@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "vite build",
-    "dev": "vite",
+    "build": "vite build && tailwindcss -o src/style.css --minify",
+    "dev": "vite && TAILWIND_MODE=watch postcss -i style.css -o build.css --watch",
     "preview": "vite preview"
   },
   "dependencies": {

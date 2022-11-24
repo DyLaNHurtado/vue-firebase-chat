@@ -3,7 +3,7 @@
     <div class="w-full h-full flex justify-center items-center">
         <button v-if="!user" @click="login" class="px-5 py-3 bg-gray-300">Log in with google</button>
         <template v-else>
-            <h1 class="text-lg text-gray-800">{{user.profile}}</h1>
+            <h1 class="text-lg text-gray-800">{{'Welcome '+ user.additionalUserInfo.profile.name}}</h1>
             <button @click="logOut" class="px-5 py-3 bg-gray-300">Log out</button>
         </template>
     </div>
@@ -22,7 +22,7 @@ export default{
             try{
                 const provider = new fb.auth.GoogleAuthProvider();
                 this.user =  await auth.signInWithPopup(provider)
-                console.log(this.user);
+                console.log(this.user.additionalUserInfo.profile.name);
             }catch(error){
                 console.error(error.message)
             }

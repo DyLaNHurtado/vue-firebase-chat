@@ -1,6 +1,11 @@
 import { createStore } from 'vuex'
 
-export default createStore({
+import messages from './messages';
+import user from './user';
+import rooms from './rooms';
+import utils from './utils';
+
+const store = createStore({
   state: {
   },
   getters: {
@@ -8,7 +13,10 @@ export default createStore({
   mutations: {
   },
   actions: {
+    checkAuth(context){}
   },
   modules: {
+    messages,rooms,user,utils
   }
 })
+export default store;
