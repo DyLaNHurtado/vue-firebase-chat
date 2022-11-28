@@ -59,9 +59,10 @@ import {mapState} from "vuex";
             async doLogout(){
                 try {
                     await this.$store.dispatch("user/doLogout");
-                    this.$router.push({path:"/auth"})
+                    this.$router.push({path:"/auth"});
+                    this.$toast.success("Logged out!");
                 } catch (error) {
-                    console.error(error.message);
+                    this.$toast.error(error.message);
                 }
             }
         },

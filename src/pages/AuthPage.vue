@@ -29,7 +29,6 @@
                         <label for="remember" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember
                             me</label>
                     </div>
-                    <div class="w-full text-red-500 text-sm">{{ errorMessage }}</div>
                     <div class="mb-6 text-white hover:underline"><a href="#" @click="isLogin = false">Don't have an
                             account?</a></div>
                     <button type="submit"
@@ -79,7 +78,6 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="***********" required>
                     </div>
-                    <div class="w-full text-red-500 text-sm">{{ errorMessage }}</div>
                     <div class="mb-6 text-white hover:underline"><a href="#" @click="isLogin = true">Want to login?</a>
                     </div>
                     <button type="submit"
@@ -113,7 +111,6 @@ export default {
                 email: '',
                 password: '',
             },
-            errorMessage:'',
         }
     },
     methods: {
@@ -130,14 +127,14 @@ export default {
                     email:this.userData.email,
                     password:this.userData.password,
                 });
+                this.$toast.success("Logged in!");
                 this.resetData();
                 this.redirect();
             } catch (error) {
                 console.error(error.message);
-                this.errorMessage = error.message;
+                this.$toast.error(error.message);
             }finally{
                 this.isLoading = false;
-                setTimeout(()=>{this.errorMessage=''},5000);
             }
         },
         async doRegister() {
@@ -148,14 +145,14 @@ export default {
                     email:this.userData.email,
                     password:this.userData.password,
                 });
+                this.$toast.success("Account created!");
                 this.resetData();
                 this.redirect();
             } catch (error) {
-                console.error(error.message);
+                this.$toast.error(error.message);
                 this.errorMessage = error.message;
             }finally{
                 this.isLoading = false;
-                setTimeout(()=>{this.errorMessage=''},5000);
             }
         },
     }
