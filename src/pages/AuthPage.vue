@@ -1,6 +1,6 @@
 <template>
     <div class="flex items-center justify-center w-full h-full bg-gray-100 dark:bg-gray-700 ">
-        <div class="py-5 px-10 w-full md:w-3/4 bg-gray-600 rounded">
+        <div class=" p-10 w-full md:w-3/4 bg-gray-600 rounded">
             <!-- Login Form -->
             <template v-if="isLogin">
                 <h1 class="text-center text-2xl my-5 text-white">Login</h1>
@@ -21,7 +21,7 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="***********" required>
                     </div>
-                    <div class="flex items-start mb-6">
+                    <div class="flex items-start mb-2">
                         <div class="flex items-center h-5">
                             <input id="remember" type="checkbox" value=""
                                 class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800">
@@ -29,6 +29,7 @@
                         <label for="remember" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember
                             me</label>
                     </div>
+                    <div class="w-full text-red-500 text-sm">{{ errorMessage }}</div>
                     <div class="mb-6 text-white hover:underline"><a href="#" @click="isLogin = false">Don't have an
                             account?</a></div>
                     <button type="submit"
@@ -78,6 +79,7 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="***********" required>
                     </div>
+                    <div class="w-full text-red-500 text-sm">{{ errorMessage }}</div>
                     <div class="mb-6 text-white hover:underline"><a href="#" @click="isLogin = true">Want to login?</a>
                     </div>
                     <button type="submit"
@@ -110,7 +112,8 @@ export default {
                 name: '',
                 email: '',
                 password: '',
-            }
+            },
+            errorMessage:'',
         }
     },
     methods: {
@@ -131,8 +134,10 @@ export default {
                 this.redirect();
             } catch (error) {
                 console.error(error.message);
+                this.errorMessage = error.message;
             }finally{
                 this.isLoading = false;
+                setTimeout(()=>{this.errorMessage=''},5000);
             }
         },
         async doRegister() {
@@ -147,8 +152,10 @@ export default {
                 this.redirect();
             } catch (error) {
                 console.error(error.message);
+                this.errorMessage = error.message;
             }finally{
                 this.isLoading = false;
+                setTimeout(()=>{this.errorMessage=''},5000);
             }
         },
     }
