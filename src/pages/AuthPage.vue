@@ -127,12 +127,38 @@ export default {
                     email:this.userData.email,
                     password:this.userData.password,
                 });
-                this.$toast.success("Logged in!");
+                this.$toast.success("Logged in!",{
+                        position: "top-center",
+                        timeout: 5000,
+                        closeOnClick: true,
+                        pauseOnFocusLoss: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        draggablePercent: 0.6,
+                        showCloseButtonOnHover: false,
+                        hideProgressBar: true,
+                        closeButton: "button",
+                        icon: true,
+                        rtl: false
+                        });
                 this.resetData();
                 this.redirect();
             } catch (error) {
                 console.error(error.message);
-                this.$toast.error(error.message);
+                this.$toast.error(error.message,{
+                        position: "top-center",
+                        timeout: 5000,
+                        closeOnClick: true,
+                        pauseOnFocusLoss: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        draggablePercent: 0.6,
+                        showCloseButtonOnHover: false,
+                        hideProgressBar: true,
+                        closeButton: "button",
+                        icon: true,
+                        rtl: false
+                        });
             }finally{
                 this.isLoading = false;
             }
@@ -145,11 +171,37 @@ export default {
                     email:this.userData.email,
                     password:this.userData.password,
                 });
-                this.$toast.success("Account created!");
+                this.$toast.success("Account created!",{
+                        position: "top-center",
+                        timeout: 5000,
+                        closeOnClick: true,
+                        pauseOnFocusLoss: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        draggablePercent: 0.6,
+                        showCloseButtonOnHover: false,
+                        hideProgressBar: true,
+                        closeButton: "button",
+                        icon: true,
+                        rtl: false
+                        });
                 this.resetData();
                 this.redirect();
             } catch (error) {
-                this.$toast.error(error.message);
+                this.$toast.error(error.message,{
+                        position: "top-center",
+                        timeout: 5000,
+                        closeOnClick: true,
+                        pauseOnFocusLoss: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        draggablePercent: 0.6,
+                        showCloseButtonOnHover: false,
+                        hideProgressBar: true,
+                        closeButton: "button",
+                        icon: true,
+                        rtl: false
+                        });
                 this.errorMessage = error.message;
             }finally{
                 this.isLoading = false;
